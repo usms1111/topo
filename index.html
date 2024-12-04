@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Определение номенклатуры топографической карты</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        input, button { padding: 10px; margin-top: 10px; width: calc(100% - 22px); box-sizing: border-box; }
+        button { background-color: #28a745; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Определение номенклатуры топографической карты</h1>
+        <input type="text" id="coordinates" placeholder="Введите координаты (широта, долгота)">
+        <button onclick="getMapSheet()">Определить номенклатуру</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        function getMapSheet() {
+            const coordinates = document.getElementById('coordinates').value;
+            const [latitude, longitude] = coordinates.split(',').map(coord => parseFloat(coord.trim()));
+
+            if (isNaN(latitude) || isNaN(longitude)) {
+                document.getElementById('result').innerText = 'Ошибка: Некорректные координаты';
+                return;
+            }
+
+            // Простая логика для генерации номенклатуры
+            const latPart = Math.floor((latitude + 90) / 2);
+            const lonPart = Math.floor((longitude + 180) / 2);
+            const result = `Номенклатура: ${latPart}_${lonPart}`;
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
