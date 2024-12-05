@@ -28,12 +28,19 @@
     </div>
     <script>
         function getMapSheet() {
-            const shg = document.getElementById('coordinatesshg').value;
-            const shm = document.getElementById('coordinatesshm').value;
-            const shs = document.getElementById('coordinatesshs').value;
-            const dgg = document.getElementById('coordinatesdgg').value;
-            const dgm = document.getElementById('coordinatesdgm').value;
-            const dgs = document.getElementById('coordinatesdgs').value;
+            const shgstr = document.getElementById('coordinatesshg').value;
+            const shmstr = document.getElementById('coordinatesshm').value;
+            const shsstr = document.getElementById('coordinatesshs').value;
+            const dggstr = document.getElementById('coordinatesdgg').value;
+            const dgmstr = document.getElementById('coordinatesdgm').value;
+            const dgsstr = document.getElementById('coordinatesdgs').value;
+
+            const shg = parseFloat(shgstr.value);
+            const shm = parseFloat(shmstr.value);
+            const shs = parseFloat(shsstr.value);
+            const dgg = parseFloat(dggstr.value);
+            const dgm = parseFloat(dgmstr.value);
+            const dgs = parseFloat(dgsstr.value);
             // Простая логика для генерации номенклатуры
             const dg = dgg * 3600 + dgm * 60 + dgs;
             const sh = shg * 3600 + shm * 60 + shs;
