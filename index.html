@@ -34,7 +34,6 @@
             const dgg = document.getElementById('coordinatesdgg').value;
             const dgm = document.getElementById('coordinatesdgm').value;
             const dgs = document.getElementById('coordinatesdgs').value;
-
             // Простая логика для генерации номенклатуры
             const dg = dgg * 3600 + dgm * 60 + dgs;
             const sh = shg * 3600 + shm * 60 + shs;
@@ -44,6 +43,7 @@
             const result = `Номенклатура: ${sh}-${dg}`;
 
             document.getElementById('result').innerText = result;
+            return;
         }
     </script>
 </body>
