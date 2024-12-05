@@ -17,24 +17,31 @@
 <body>
     <div class="container">
         <h1>Определение номенклатуры топографической карты</h1>
-        <input type="text" id="coordinates" placeholder="Введите координаты (широта, долгота)">
+        <input type="text" id="coordinatesshg" placeholder="Введите градусы широты">
+        <input type="text" id="coordinatesshm" placeholder="Введите минуты широты">
+        <input type="text" id="coordinatesshs" placeholder="Введите секунды широты">
+        <input type="text" id="coordinatesdgg" placeholder="Введите градусы долготы">
+        <input type="text" id="coordinatesdgm" placeholder="Введите минуты долготы">
+        <input type="text" id="coordinatesdgs" placeholder="Введите секунды долготы">
         <button onclick="getMapSheet()">Определить номенклатуру</button>
         <div id="result"></div>
     </div>
     <script>
         function getMapSheet() {
-            const coordinates = document.getElementById('coordinates').value;
-            const [latitude, longitude] = coordinates.split(',').map(coord => parseFloat(coord.trim()));
-
-            if (isNaN(latitude) || isNaN(longitude)) {
-                document.getElementById('result').innerText = 'Ошибка: Некорректные координаты';
-                return;
-            }
+            const shg = document.getElementById('coordinatesshg').value;
+            const shm = document.getElementById('coordinatesshm').value;
+            const shs = document.getElementById('coordinatessha').value;
+            const dgg = document.getElementById('coordinatesdgg').value;
+            const dgm = document.getElementById('coordinatesdgm').value;
+            const dgs = document.getElementById('coordinatesdgs').value;
 
             // Простая логика для генерации номенклатуры
-            const latPart = Math.floor((latitude + 90) / 2);
-            const lonPart = Math.floor((longitude + 180) / 2);
-            const result = `Номенклатура: ${latPart}_${lonPart}`;
+            const dg = dgg * 3600 + dgm * 60 + dgs;
+            const sh = shg * 3600 + shm * 60 + shs;
+            const bukva = Math.floor(sh / 14400) + 1;
+            const ryad = Math.flor(dg / 21600) + 31;
+            const sh_bukva = String.fromCodePoint(65 + bukva);
+            const result = `Номенклатура: ${sh_bukva}-${dg}`;
 
             document.getElementById('result').innerText = result;
         }
