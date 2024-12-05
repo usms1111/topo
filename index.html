@@ -40,8 +40,8 @@
             const sh = shg * 3600 + shm * 60 + shs;
             const bukva = Math.floor(sh / 14400) + 1;
             const ryad = Math.flor(dg / 21600) + 31;
-            var sh_bukva = String.fromCodePoint(65 + bukva);
-            const result = `Номенклатура: ${sh_bukva}-${ryad}`;
+            //var sh_bukva = String.fromCodePoint(65 + bukva);
+            const result = `Номенклатура: ${bukva}-${ryad}`;
 
             document.getElementById('result').innerText = result;
         }
