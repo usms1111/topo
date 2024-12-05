@@ -17,23 +17,23 @@
 <body>
     <div class="container">
         <h1>Определение номенклатуры топографической карты</h1>
-        <input type="text" id="coordinatesshg" placeholder="Введите градусы широты">
-        <input type="text" id="coordinatesshm" placeholder="Введите минуты широты">
-        <input type="text" id="coordinatesshs" placeholder="Введите секунды широты">
-        <input type="text" id="coordinatesdgg" placeholder="Введите градусы долготы">
-        <input type="text" id="coordinatesdgm" placeholder="Введите минуты долготы">
-        <input type="text" id="coordinatesdgs" placeholder="Введите секунды долготы">
+        <input type="number" id="coordinatesshg" placeholder="Введите градусы широты">
+        <input type="number" id="coordinatesshm" placeholder="Введите минуты широты">
+        <input type="number" id="coordinatesshs" placeholder="Введите секунды широты">
+        <input type="number" id="coordinatesdgg" placeholder="Введите градусы долготы">
+        <input type="number" id="coordinatesdgm" placeholder="Введите минуты долготы">
+        <input type="number" id="coordinatesdgs" placeholder="Введите секунды долготы">
         <button onclick="getMapSheet()">Определить номенклатуру</button>
         <div id="result"></div>
     </div>
     <script>
         function getMapSheet() {
-            const shg = ParseFloat(document.getElementById('coordinatesshg').value);
-            const shm = ParseFloat(document.getElementById('coordinatesshm').value);
-            const shs = ParseFloat(document.getElementById('coordinatesshs').value);
-            const dgg = ParseFloat(document.getElementById('coordinatesdgg').value);
-            const dgm = ParseFloat(document.getElementById('coordinatesdgm').value);
-            const dgs = ParseFloat(document.getElementById('coordinatesdgs').value);
+            const shg = document.getElementById('coordinatesshg').value;
+            const shm = document.getElementById('coordinatesshm').value;
+            const shs = document.getElementById('coordinatesshs').value;
+            const dgg = document.getElementById('coordinatesdgg').value;
+            const dgm = document.getElementById('coordinatesdgm').value;
+            const dgs = document.getElementById('coordinatesdgs').value;
             // Простая логика для генерации номенклатуры
             const dg = dgg * 3600 + dgm * 60 + dgs;
             const sh = shg * 3600 + shm * 60 + shs;
